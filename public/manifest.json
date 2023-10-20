@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+
+  "name": "GitHub Most Liked",
+  "description": "Tools for self-learners",
+  "version": "1.0",
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/vendor.js", "js/content_script.js"]
+    }
+  ],
+
+  "background": {
+    "service_worker": "js/background.js"
+  },
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "webRequest",
+    "webNavigation",
+    "action",
+
+    "contextMenus"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "nextIssue": {
+      "suggested_key": {
+        "default": "Ctrl+L"
+      },
+      "description": "Go to next most liked"
+    },
+    "prevIssue": {
+      "suggested_key": {
+        "default": "Ctrl+K"
+      },
+      "description": "Go to previous most liked"
+    }
+  }
+}
